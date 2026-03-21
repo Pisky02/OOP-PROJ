@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src\\OnlineShop",
+    "\\src\\OnlineShop\\bin",
+    "\\src\\OnlineShop\\Controllers",
+    "\\src\\OnlineShop\\Data",
+    "\\src\\OnlineShop\\Models",
+    "\\src\\OnlineShop\\obj\\Debug\\net8.0",
+    "\\src\\OnlineShop\\Views",
+    "\\src\\OnlineShop\\Views\\Cart",
+    "\\src\\OnlineShop\\Views\\Home"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\OnlineShop.sln",
   "PreviewInSolutionExplorer": false
 }
