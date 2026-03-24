@@ -1,28 +1,31 @@
-﻿using AutoMapper;
-using Business.DTOs;
+﻿using Business.DTOs;
 using Business.Services.Interfaces;
 using Database.Models;
 
 namespace Business.Services;
 
-internal class CartService(IMapper _mapper) : ICartService
+public class CartService : ICartService
 {
     public async Task<CartDto> GetCartAsync(int id)
     {
-        var cart = new Cart //tady by spravne melo byt volani do repository pro ziskani dat z databaze, ale pro ukazku to jenom vytvorime
+        var cart = new Cart // placeholder - should call repository in real implementation
         {
             Id = id,
             DateCreated = DateTime.Now,
         };
+
         if (cart == null)
         {
             throw new KeyNotFoundException();
         }
 
-        var cartDto = _mapper.Map<CartDto>(cart);
+        var cartDto = new CartDto
+        {
+            Id = cart.Id,
+            DateCreated = cart.DateCreated,
+            CreatedBefore = DateTime.Now - cart.DateCreated
+        };
 
-        return cartDto;
-
-
+        return await Task.FromResult(cartDto);
     }
 }

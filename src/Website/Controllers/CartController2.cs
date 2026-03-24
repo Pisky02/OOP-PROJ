@@ -6,14 +6,16 @@ namespace Website.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CartController(ICartService cartService)
+public class CartController : ControllerBase
 {
+    private readonly ICartService _cartService;
+    public CartController(ICartService cartService) => _cartService = cartService;
     [HttpGet("{id}")]
     public async Task<ActionResult<CartDto>> GetCart(int id)
     {
         try
         {
-            var cart = await cartService.GetCartAsync(id);
+            var cart = await _cartService.GetCartAsync(id);
             return Ok(cart);
         }
         catch (KeyNotFoundException ex)

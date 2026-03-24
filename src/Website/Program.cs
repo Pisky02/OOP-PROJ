@@ -1,10 +1,20 @@
+
+using Business.Services;
+using Business.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using OnlineShop.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container
 builder.Services.AddControllersWithViews();
+
+// Register ApplicationDbContext (SQLite)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=online_shop.db"));
+
+// Register business services
+builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
 
@@ -18,33 +28,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.MapControllers();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Cart}/{action=Index}/{id?}");
 
-// Ensure database is created, apply migrations and seed some sample products for the course demo
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    try
-    {
-        db.Database.Migrate();
-
-        if (!db.Products.Any())
-        {
-            db.Products.AddRange(
-                new Product { Name = "Basic T-Shirt", Description = "Cotton t-shirt", Price = 12.99m },
-                new Product { Name = "Coffee Mug", Description = "Ceramic mug", Price = 7.50m },
-                new Product { Name = "Sticker Pack", Description = "Set of stickers", Price = 3.00m }
-            );
-            db.SaveChanges();
-        }
-    }
-    catch
-    {
-        // swallow errors for the simple lab project; inspect logs in real projects
-    }
-}
-// cauda
 app.Run();
 //TODO: service & database dependency injection
