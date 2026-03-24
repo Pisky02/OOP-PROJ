@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Infrastructure.Data;
-using OnlineShop.Core.Models;
 
 namespace OnlineShop.Controllers;
 
 public class CartController : Controller
 {
-    private readonly ApplicationDbContext _db;
     public CartController(ApplicationDbContext db) => _db = db;
 
     private string GetSessionId()

@@ -10,7 +10,4 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OnlineShop.Core\OnlineShop.Core.csproj" />
-  </ItemGroup>
 </Project>

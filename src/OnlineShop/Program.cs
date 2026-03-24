@@ -1,6 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Infrastructure.Data;
-using OnlineShop.Core.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,3 +47,4 @@ using (var scope = app.Services.CreateScope())
 }
 // cauda
 app.Run();
+//TODO: service & database dependency injection
