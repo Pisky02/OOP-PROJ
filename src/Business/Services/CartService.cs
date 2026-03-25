@@ -4,6 +4,7 @@ using Database.Models;
 
 namespace Business.Services;
 
+//public class CartService(IMapper _mapper) : ICartService
 public class CartService : ICartService
 {
     public async Task<CartDto> GetCartAsync(int id)
@@ -19,6 +20,7 @@ public class CartService : ICartService
             throw new KeyNotFoundException();
         }
 
+        // var cartDto = _mapper.Map<CartDto>(cart); // AutoMapper mapping (nugetka)
         var cartDto = new CartDto
         {
             Id = cart.Id,

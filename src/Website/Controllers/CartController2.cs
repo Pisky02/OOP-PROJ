@@ -6,10 +6,8 @@ namespace Website.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CartController : ControllerBase
+public class CartController(ICartService _cartService) : ControllerBase
 {
-    private readonly ICartService _cartService;
-    public CartController(ICartService cartService) => _cartService = cartService;
     [HttpGet("{id}")]
     public async Task<ActionResult<CartDto>> GetCart(int id)
     {
