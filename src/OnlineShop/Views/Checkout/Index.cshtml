@@ -1,0 +1,35 @@
+﻿@model OnlineShop.Core.Models.Checkout
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Checkout</title>
+</head>
+<body>
+    <h1>Checkout Details</h1>
+
+    <form asp-controller="Order" asp-action="Confirm" method="post">
+        <div>
+            <label>Full Name:</label><br />
+            <input type="text" name="CustomerName" required />
+        </div>
+        <br />
+        <div>
+            <label>Shipping Address:</label><br />
+            <input type="text" name="Address" required />
+        </div>
+        <br />
+        <div>
+            <label>Phone Number:</label><br />
+            <input type="tel" name="Phone" required />
+        </div>
+        <br />
+        <button type="submit">Submit Order</button>
+    </form>
+
+    <br />
+    <a href="/Cart">Back to Shopping Cart</a>
+    <a href="/Home">Continue shopping</a>
+</body>
+</html>

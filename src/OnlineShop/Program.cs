@@ -22,7 +22,7 @@ app.UseRouting();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Cart}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Ensure database is created, apply migrations and seed some sample products for the course demo
 using (var scope = app.Services.CreateScope())
@@ -47,5 +47,5 @@ using (var scope = app.Services.CreateScope())
         // swallow errors for the simple lab project; inspect logs in real projects
     }
 }
-// cauda
+
 app.Run();
